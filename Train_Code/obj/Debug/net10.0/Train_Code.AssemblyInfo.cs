@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Train_Code")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9738762734e52e1f2a3502698a3a88d4c5672aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04ef0bf193b48e0a0ee06f71091c6b6b2a0d63d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Train_Code")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Train_Code")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

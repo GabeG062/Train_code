@@ -20,7 +20,8 @@ public class PlayerTrain : Train
 
     public override bool IsPlayable(Hand h, Domino d, out bool mustFlip)
     {
-        throw new NotImplementedException();
+        mustFlip = false;
+        return true;
     }
     
     public void Open()

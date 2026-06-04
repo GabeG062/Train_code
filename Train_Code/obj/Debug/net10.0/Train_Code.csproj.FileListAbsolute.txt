@@ -1,0 +1,5 @@
+/home/starman062/RiderProjects/Abstract_Train/Train_Code/obj/Debug/net10.0/Train_Code.GeneratedMSBuildEditorConfig.editorconfig
+/home/starman062/RiderProjects/Abstract_Train/Train_Code/obj/Debug/net10.0/Train_Code.AssemblyInfoInputs.cache
+/home/starman062/RiderProjects/Abstract_Train/Train_Code/obj/Debug/net10.0/Train_Code.AssemblyInfo.cs
+/home/starman062/RiderProjects/Abstract_Train/Train_Code/obj/Debug/net10.0/Train_Code.csproj.CoreCompileInputs.cache
+/home/starman062/RiderProjects/Abstract_Train/Train_Code/obj/Debug/net10.0/Train_Code.sourcelink.json
