@@ -5,10 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="obj\PlayerTrain.cs" />
-    <Compile Include="obj\program.cs" />
-  </ItemGroup>
+  
 
 </Project>
