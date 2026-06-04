@@ -1,4 +1,4 @@
-namespace DominoClasses
+namespace TrainClasses
 {
     public abstract class Train
     {

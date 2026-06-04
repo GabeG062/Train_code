@@ -1,5 +1,5 @@
 
-namespace DominoClasses
+namespace TrainClasses
 {
     public class Domino
     {
