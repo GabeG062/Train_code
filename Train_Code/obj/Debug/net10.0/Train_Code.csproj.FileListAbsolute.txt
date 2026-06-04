@@ -10,3 +10,6 @@
 /home/starman062/RiderProjects/Abstract_Train/Train_Code/obj/Debug/net10.0/refint/Train_Code.dll
 /home/starman062/RiderProjects/Abstract_Train/Train_Code/obj/Debug/net10.0/Train_Code.pdb
 /home/starman062/RiderProjects/Abstract_Train/Train_Code/obj/Debug/net10.0/ref/Train_Code.dll
+/home/starman062/RiderProjects/Abstract_Train/Train_Code/bin/Debug/net10.0/Train_Code
+/home/starman062/RiderProjects/Abstract_Train/Train_Code/bin/Debug/net10.0/Train_Code.runtimeconfig.json
+/home/starman062/RiderProjects/Abstract_Train/Train_Code/obj/Debug/net10.0/Train_Code.genruntimeconfig.cache
