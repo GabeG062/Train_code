@@ -34,7 +34,7 @@ namespace TrainClasses
     {
         get
         {
-            return dominoes[Count];
+            return dominoes[Count -1];
         }
     }
 
@@ -42,7 +42,12 @@ namespace TrainClasses
     {
         get
         {
-            return 0;
+            if (IsEmpty)
+            {
+                return EngineValue;
+            }
+
+            return LastDomino.Side2;
         }
     }
 

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Include="obj\PlayerTrain.cs" />
+    <Compile Include="obj\program.cs" />
   </ItemGroup>
 
 </Project>
