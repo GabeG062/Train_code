@@ -1,6 +1,6 @@
 using System;
 
-namespace CardClasses
+namespace TrainClasses
 {
     public class Card
     {

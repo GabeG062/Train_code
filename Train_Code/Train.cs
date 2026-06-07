@@ -88,6 +88,7 @@ namespace TrainClasses
 
         public void Play(Hand h, Domino d)
         {
+            int index = h.IndexOf(d);
             if (IsPlayable(h, d, out bool mustFlip))
             {
                 if (mustFlip)
@@ -97,8 +98,12 @@ namespace TrainClasses
                 else
                 {
                     Add(d);
-                
+                    h.Discard(index);
                 }
+            }
+            else
+            {
+                throw new InvalidOperationException("Domino is not playable.");
             }
         }
 
@@ -111,7 +116,19 @@ namespace TrainClasses
 
         public override string ToString()
         {
-            return "Train";
+            if (IsEmpty)
+            {
+                return "Empty train";
+            }
+            
+            string output = "";
+
+            foreach  (Domino d in dominoes)
+            {
+                output += d.ToString() + "\n";
+            }
+            return output;
+            
         }
     
     
