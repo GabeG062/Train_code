@@ -14,6 +14,12 @@ public class program
         TestPlayerTrainInheritedPlayableValue();
         TestPlayerTrainIsPlayable();
         TestPlayerTrainToString();
+        TestMexicanTrainConstructors();
+        TestMexicanTrainInheritedAdd();
+        TestMexicanTrainInheritedPlayableValue();
+        TestMexicanTrainIsPlayable();
+        TestMexicanTrainToString();
+        TestMexicanTrainForeach();
         TestDominoSorting();
         TestTrainForeach();
 
@@ -206,6 +212,119 @@ public class program
         Console.WriteLine();
     }
 
+static void TestMexicanTrainConstructors()
+{
+    MexicanTrain train1 = new MexicanTrain();
+    MexicanTrain train2 = new MexicanTrain(12);
+
+    Console.WriteLine("Testing MexicanTrain constructors");
+    Console.WriteLine("Default MexicanTrain. Expecting IsEmpty true. " + train1.IsEmpty);
+    Console.WriteLine("Overloaded MexicanTrain. Expecting EngineValue 12. " + train2.EngineValue);
+
+    Console.WriteLine();
+}
+
+static void TestMexicanTrainInheritedAdd()
+{
+    MexicanTrain train = new MexicanTrain(12);
+
+    Domino d = new Domino(12, 5);
+
+    Console.WriteLine("Testing MexicanTrain inherited Add method");
+    Console.WriteLine("Before Add IsEmpty. Expecting true. " + train.IsEmpty);
+
+    train.Add(d);
+
+    Console.WriteLine("After Add IsEmpty. Expecting false. " + train.IsEmpty);
+    Console.WriteLine("Domino at index 0. Expecting Side 1: 12  Side 2: 5. " + train[0]);
+
+    Console.WriteLine();
+}
+
+static void TestMexicanTrainInheritedPlayableValue()
+{
+    MexicanTrain train = new MexicanTrain(12);
+
+    Console.WriteLine("Testing MexicanTrain inherited PlayableValue property");
+    Console.WriteLine("PlayableValue when empty. Expecting 12. " + train.PlayableValue);
+
+    Domino d1 = new Domino(12, 5);
+    train.Add(d1);
+
+    Console.WriteLine("PlayableValue after adding 12|5. Expecting 5. " + train.PlayableValue);
+
+    Domino d2 = new Domino(5, 8);
+    train.Add(d2);
+
+    Console.WriteLine("PlayableValue after adding 5|8. Expecting 8. " + train.PlayableValue);
+
+    Console.WriteLine();
+}
+
+static void TestMexicanTrainIsPlayable()
+{
+    Hand hand = new Hand();
+    MexicanTrain train = new MexicanTrain(12);
+
+    Domino playableDomino = new Domino(12, 5);
+    Domino flippedDomino = new Domino(6, 12);
+    Domino notPlayableDomino = new Domino(3, 4);
+
+    bool mustFlip;
+    bool isPlayable = train.IsPlayable(hand, playableDomino, out mustFlip);
+
+    Console.WriteLine("Testing MexicanTrain IsPlayable");
+    Console.WriteLine("Playable domino result. Expecting true. " + isPlayable);
+    Console.WriteLine("Playable domino mustFlip. Expecting false. " + mustFlip);
+
+    isPlayable = train.IsPlayable(hand, flippedDomino, out mustFlip);
+
+    Console.WriteLine("Flipped playable domino result. Expecting true. " + isPlayable);
+    Console.WriteLine("Flipped playable domino mustFlip. Expecting true. " + mustFlip);
+
+    isPlayable = train.IsPlayable(hand, notPlayableDomino, out mustFlip);
+
+    Console.WriteLine("Not playable domino result. Expecting false. " + isPlayable);
+    Console.WriteLine("Not playable domino mustFlip. Expecting false. " + mustFlip);
+
+    Console.WriteLine();
+}
+
+static void TestMexicanTrainToString()
+{
+    MexicanTrain train = new MexicanTrain(12);
+
+    Console.WriteLine("Testing MexicanTrain inherited ToString");
+    Console.WriteLine("Empty ToString. Expecting Empty train. " + train.ToString());
+
+    train.Add(new Domino(12, 5));
+    train.Add(new Domino(5, 8));
+
+    Console.WriteLine("Non-empty ToString. Expecting two dominos:");
+    Console.WriteLine(train.ToString());
+
+    Console.WriteLine();
+}
+
+static void TestMexicanTrainForeach()
+{
+    MexicanTrain train = new MexicanTrain(12);
+
+    train.Add(new Domino(12, 5));
+    train.Add(new Domino(5, 8));
+    train.Add(new Domino(8, 3));
+
+    Console.WriteLine("Testing MexicanTrain foreach");
+    Console.WriteLine("Expecting three dominos printed in order:");
+
+    foreach (Domino d in train)
+    {
+        Console.WriteLine(d);
+    }
+
+    Console.WriteLine();
+}
+
     static void TestDominoSorting()
     {
         List<Domino> dominos = new List<Domino>();
@@ -217,7 +336,6 @@ public class program
         dominos.Sort();
 
         Console.WriteLine("Testing Domino sorting by Score");
-        Console.WriteLine("Expecting scores in order: 3, 9, 12");
 
         foreach (Domino d in dominos)
         {

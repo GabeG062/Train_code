@@ -6,11 +6,10 @@ public class MexicanTrain : Train
     
     public override bool IsPlayable(Hand h, Domino d, out bool mustFlip)
     {
-        mustFlip = false;
-        return true;
+        return IsPlayable(d, out mustFlip);
     }
 
-    MexicanTrain() {}
+    public MexicanTrain() {}
     
-    MexicanTrain(int engineValue) : base(engineValue) {}
+    public MexicanTrain(int engineValue) : base(engineValue) {}
 }
