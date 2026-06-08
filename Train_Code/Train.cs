@@ -1,6 +1,8 @@
+using System.Collections;
+
 namespace TrainClasses
 {
-    public abstract class Train
+    public abstract class Train : IEnumerable<Domino>
     {
         //fields
         private List<Domino> dominoes = new List<Domino>();
@@ -60,6 +62,16 @@ namespace TrainClasses
         }
         
         //methods
+        
+        public IEnumerator<Domino> GetEnumerator()
+        {
+            return dominoes.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
         public void Add(Domino d)
         {
             dominoes.Add(d);
@@ -94,12 +106,10 @@ namespace TrainClasses
                 if (mustFlip)
                 {
                     d.Flip();
+                    
                 }
-                else
-                {
-                    Add(d);
-                    h.Discard(index);
-                }
+                Add(d);
+                h.Discard(index);
             }
             else
             {

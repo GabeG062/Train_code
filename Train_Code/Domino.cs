@@ -1,7 +1,7 @@
 
 namespace TrainClasses
 {
-    public class Domino
+    public class Domino : IComparable<Domino>
     {
         private int side1;
         private int side2;
@@ -67,6 +67,16 @@ namespace TrainClasses
                 return side1 + side2;
             }
         }
+        public int CompareTo(Domino? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+
+            return Score.CompareTo(other.Score);
+        }
+        
 
         // this method could also have been a read-only property
         public bool IsDouble()

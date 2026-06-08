@@ -14,6 +14,8 @@ public class program
         TestPlayerTrainInheritedPlayableValue();
         TestPlayerTrainIsPlayable();
         TestPlayerTrainToString();
+        TestDominoSorting();
+        TestTrainForeach();
 
         Console.ReadLine();
     }
@@ -160,14 +162,29 @@ public class program
         Hand hand = new Hand();
         PlayerTrain train = new PlayerTrain(hand, 12);
 
-        Domino d = new Domino(12, 5);
+        Domino playableDomino = new Domino(12, 5);
+        Domino notPlayableDomino = new Domino(3, 4);
 
         bool mustFlip;
-        bool isPlayable = train.IsPlayable(hand, d, out mustFlip);
+        bool isPlayable = train.IsPlayable(hand, playableDomino, out mustFlip);
 
         Console.WriteLine("Testing PlayerTrain IsPlayable");
-        Console.WriteLine("IsPlayable result. Expecting true. " + isPlayable);
-        Console.WriteLine("mustFlip result. Expecting false. " + mustFlip);
+        Console.WriteLine("Playable domino result. Expecting true. " + isPlayable);
+        Console.WriteLine("Playable domino mustFlip. Expecting false. " + mustFlip);
+        Console.WriteLine("Train IsOpen after playable domino. Expecting false. " + train.IsOpen);
+
+        isPlayable = train.IsPlayable(hand, notPlayableDomino, out mustFlip);
+
+        Console.WriteLine("Not playable domino result. Expecting false. " + isPlayable);
+        Console.WriteLine("Not playable domino mustFlip. Expecting false. " + mustFlip);
+        Console.WriteLine("Train IsOpen after not playable domino. Expecting true. " + train.IsOpen);
+
+        Domino flippedDomino = new Domino(6, 12);
+        isPlayable = train.IsPlayable(hand, flippedDomino, out mustFlip);
+
+        Console.WriteLine("Flipped playable domino result. Expecting true. " + isPlayable);
+        Console.WriteLine("Flipped playable domino mustFlip. Expecting true. " + mustFlip);
+        Console.WriteLine("Train IsOpen after flipped playable domino. Expecting false. " + train.IsOpen);
 
         Console.WriteLine();
     }
@@ -178,7 +195,54 @@ public class program
         PlayerTrain train = new PlayerTrain(hand, 12);
 
         Console.WriteLine("Testing inherited ToString");
-        Console.WriteLine("ToString. Expecting Train. " + train.ToString());
+        Console.WriteLine("Empty ToString. Expecting Empty train. " + train.ToString());
+
+        train.Add(new Domino(12, 5));
+        train.Add(new Domino(5, 8));
+
+        Console.WriteLine("Non-empty ToString. Expecting two dominos:");
+        Console.WriteLine(train.ToString());
+
+        Console.WriteLine();
+    }
+
+    static void TestDominoSorting()
+    {
+        List<Domino> dominos = new List<Domino>();
+
+        dominos.Add(new Domino(6, 6));
+        dominos.Add(new Domino(1, 2));
+        dominos.Add(new Domino(4, 5));
+
+        dominos.Sort();
+
+        Console.WriteLine("Testing Domino sorting by Score");
+        Console.WriteLine("Expecting scores in order: 3, 9, 12");
+
+        foreach (Domino d in dominos)
+        {
+            Console.WriteLine(d + " Score: " + d.Score);
+        }
+
+        Console.WriteLine();
+    }
+    
+    static void TestTrainForeach()
+    {
+        Hand hand = new Hand();
+        PlayerTrain train = new PlayerTrain(hand, 12);
+
+        train.Add(new Domino(12, 5));
+        train.Add(new Domino(5, 8));
+        train.Add(new Domino(8, 3));
+
+        Console.WriteLine("Testing Train foreach");
+        Console.WriteLine("Expecting three dominos printed in order:");
+
+        foreach (Domino d in train)
+        {
+            Console.WriteLine(d);
+        }
 
         Console.WriteLine();
     }
