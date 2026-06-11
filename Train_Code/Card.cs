@@ -2,7 +2,7 @@ using System;
 
 namespace TrainClasses
 {
-    public class Card
+    public class Card : IComparable<Card>
     {
         private static string[] values = { "", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Ten", "Jack", "Queen", "King" };
         private static string[] suits = { "", "Clubs", "Diamonds", "Hearts", "Spades" };
@@ -126,6 +126,24 @@ namespace TrainClasses
             if (suit == 0 && value == 0)
             { return true; }
             return false;
+        }
+
+        public int Score
+        {
+            get
+            {
+                return value;
+            }
+        }
+        
+        public int CompareTo(Card? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+
+            return Score.CompareTo(other.Score);
         }
         
     }
