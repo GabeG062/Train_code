@@ -4,7 +4,7 @@ public class PlayerTrain : Train
 {
     //fields
     
-    private DomHand _domHand;
+    private Hand _hand;
 
     private bool isOpen;
     
@@ -18,15 +18,15 @@ public class PlayerTrain : Train
         isOpen = false;
     }
 
-    public override bool IsPlayable(DomHand h, Domino d, out bool mustFlip)
+    public override bool IsPlayable(Hand h, Domino d, out bool mustFlip)
     {
-       if (IsPlayable(d, out mustFlip) && h == _domHand)
+       if (IsPlayable(d, out mustFlip) && h == _hand)
        {
            Close();
            return true;
        }
 
-       if (IsPlayable(d, out mustFlip) && h != _domHand)
+       if (IsPlayable(d, out mustFlip) && h != _hand)
        {
            return true;
        }
@@ -39,7 +39,7 @@ public class PlayerTrain : Train
         isOpen = true;
     }
 
-    public PlayerTrain(DomHand h) { _domHand = h; }
+    public PlayerTrain(Hand h) { _hand = h; }
     
-    public PlayerTrain(DomHand h, int engineValue) : base(engineValue) { _domHand = h; }
+    public PlayerTrain(Hand h, int engineValue) : base(engineValue) { _hand = h; }
 }

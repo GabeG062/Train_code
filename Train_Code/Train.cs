@@ -96,9 +96,9 @@ namespace TrainClasses
             }
         }
 
-        public abstract bool IsPlayable(DomHand h, Domino d, out bool mustFlip);
+        public abstract bool IsPlayable(Hand h, Domino d, out bool mustFlip);
 
-        public void Play(DomHand h, Domino d)
+        public void Play(Hand h, Domino d)
         {
             int index = h.IndexOf(d);
             if (IsPlayable(h, d, out bool mustFlip))

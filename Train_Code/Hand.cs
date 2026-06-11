@@ -1,87 +1,70 @@
-
 using System;
 using System.Collections.Generic;
 
-namespace CardClasses
+namespace TrainClasses
 {
     public class Hand
     {
-        protected List<Card> cards = new List<Card>();
+        protected List<Domino> dominoes = new List<Domino>();
 
         public Hand()
         {
             
         }
 
-        public Hand(Deck d, int numCards)
-        {
-            for (int i = 0; i < numCards; i++)
-            {
-                if (!d.IsEmpty)
-                {
-                    cards.Add(d.Deal());
-                }
-            }
-        }
-
-        public int NumCards
+        public int NumDominoes
         {
             get
             {
-                return cards.Count;
+                return dominoes.Count;
             }
         }
 
-        public Card this[int i]
+        public Domino this[int i]
         {
             get
             {
-                return cards[i];
+                return dominoes[i];
             }
         }
 
-        public void AddCard(Card c)
+        public void AddDomino(Domino d)
         {
-            cards.Add(c);
+            dominoes.Add(d);
         }
 
-        public Card Discard(int index)
+        public Domino Discard(int index)
         {
             if (index != -1)
             {
-                Card discardedCard = cards[index];
-                cards.RemoveAt(index);
-                return discardedCard;
+                Domino discardedDomino = dominoes[index];
+                dominoes.RemoveAt(index);
+                return discardedDomino;
             }
 
             return null;
         }
 
-        public Card GetCard(int index)
+        public Domino GetDomino(int index)
         {
-            return cards[index];
+            return dominoes[index];
         }
 
-        public bool HasCard(Card c)
+        public bool HasDomino(Domino d)
         {
-            return IndexOf(c) != -1;
+            return IndexOf(d) != -1;
         }
 
-        public bool HasCard(int value, int suit)
+        public bool HasDomino(int side1, int side2)
         {
-            return IndexOf(value, suit) != -1;
+            return IndexOf(side1, side2) != -1;
         }
 
-        public bool HasCard(int value)
+        public int IndexOf(Domino d)
         {
-            return IndexOf(value) != -1;
-        }
-
-        public int IndexOf(Card c)
-        {
-            for (int i = 0; i < cards.Count; i++)
+            for (int i = 0; i < dominoes.Count; i++)
             {
-                if (cards[i].Value == c.Value && cards[i].Suit == c.Suit)
+                if (dominoes[i].Side1 == d.Side1 && dominoes[i].Side2 == d.Side2)
                 {
                     return i;
                 }
@@ -90,24 +73,11 @@ namespace CardClasses
             return -1;
         }
 
-        public int IndexOf(int value, int suit)
+        public int IndexOf(int side1, int side2)
         {
-            for (int i = 0; i < cards.Count; i++)
+            for (int i = 0; i < dominoes.Count; i++)
             {
-                if (cards[i].Value == value && cards[i].Suit == suit)
-                {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        public int IndexOf(int value)
-        {
-            for (int i = 0; i < cards.Count; i++)
-            {
-                if (cards[i].Value == value)
+                if (dominoes[i].Side1 == side1 && dominoes[i].Side2 == side2)
                 {
                     return i;
                 }
@@ -120,9 +90,9 @@ namespace CardClasses
         {
             string output = "";
 
-            foreach (Card c in cards)
+            foreach (Domino d in dominoes)
             {
-                output += c.ToString() + "\n";
+                output += d.ToString() + "\n";
             }
 
             return output;

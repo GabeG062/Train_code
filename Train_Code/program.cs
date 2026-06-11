@@ -4,7 +4,7 @@ public class program
 {
     public static void Main(string[] args)
     {
-        /*
+        
         TestPlayerTrainConstructors();
         TestPlayerTrainOpenAndClose();
         TestPlayerTrainIsOpen();
@@ -23,12 +23,12 @@ public class program
         TestMexicanTrainForeach();
         TestDominoSorting();
         TestTrainForeach();
-        */
+        
 
         Console.ReadLine();
     }
 
-    /*static void TestPlayerTrainConstructors()
+    static void TestPlayerTrainConstructors()
     {
         Hand hand = new Hand();
 
@@ -362,25 +362,6 @@ static void TestMexicanTrainForeach()
         foreach (Domino d in train)
         {
             Console.WriteLine(d);
-        }
-
-        Console.WriteLine();
-    }*/
-    static void TestCardSorting()
-    {
-        List<Card> cards = new List<Card>();
-
-        Card.Add(new Card(6, 5));
-        Card.Add(new Card(1, 4));
-        Card.Add(new Card(6, 3));
-
-        Card.Sort();
-
-        Console.WriteLine("Testing Domino sorting by Score");
-
-        foreach (Card d in cards)
-        {
-            Console.WriteLine(d + " Score: " + d.Score);
         }
 
         Console.WriteLine();
